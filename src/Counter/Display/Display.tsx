@@ -1,7 +1,10 @@
 import React from "react";
 
-export const Display=()=>{
+export type DisplayPropsType={
+    count:number
+}
+export const Display=(props:DisplayPropsType)=>{
     return <div>
-        <input type="number"/>
+        <div>{props.count}</div>
     </div>
 }
