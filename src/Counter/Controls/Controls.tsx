@@ -1,8 +1,14 @@
-import React from "react";
+import React, {Dispatch, SetStateAction} from "react";
 
-export const Controls=()=>{
+export type ControlsPropsType = {
+    count: number
+    setCount: Dispatch<SetStateAction<number>>
+    increment: () => void
+    reset: () => void
+}
+export const Controls = (props: ControlsPropsType) => {
     return <div>
-        <button>Inc</button>
+        <button onClick={}>Inc</button>
         <button>Reset</button>
     </div>
 }
