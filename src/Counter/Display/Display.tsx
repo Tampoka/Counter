@@ -2,6 +2,6 @@ import React from "react";
 
 export const Display=()=>{
     return <div>
-       rty
+        <input type="number"/>
     </div>
 }
