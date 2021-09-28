@@ -11,13 +11,15 @@ export const Counter = () => {
         setCount(count + 1)
     }
     const reset = () => {
-        setCount(0)
+        setCount(minValue)
     }
 
     return <div>
         <Display count={count}/>
         <Controls count={count}
+                  setCount={setCount}
                   increment={increment}
-                  reset={reset}/>
+                  reset={reset}
+        />
     </div>
 }
