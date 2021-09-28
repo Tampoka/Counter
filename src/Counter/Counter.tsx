@@ -20,6 +20,7 @@ export const Counter = () => {
                   setCount={setCount}
                   increment={increment}
                   reset={reset}
+                  maxValue={maxValue}
         />
     </div>
 }

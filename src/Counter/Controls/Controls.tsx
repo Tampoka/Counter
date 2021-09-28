@@ -5,10 +5,11 @@ export type ControlsPropsType = {
     setCount: Dispatch<SetStateAction<number>>
     increment: () => void
     reset: () => void
+    maxValue:number
 }
 export const Controls = (props: ControlsPropsType) => {
     return <div>
-        <button onClick={}>Inc</button>
+        <button>Inc</button>
         <button>Reset</button>
     </div>
 }
