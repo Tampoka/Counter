@@ -2,19 +2,22 @@ import React, {useState} from "react";
 import {Controls} from "./Controls/Controls";
 import {Display} from "./Display/Display";
 
-export const Counter=()=>{
-    let [count,setCount]=useState<number>(0)
+export const Counter = () => {
+    const maxValue: number = 5
+    const minValue: number = 0
+    let [count, setCount] = useState<number>(minValue)
 
-    const increment=()=>{
-        setCount(count+1)
+    const increment = () => {
+        setCount(count + 1)
     }
-    const reset=()=>{
+    const reset = () => {
         setCount(0)
     }
-    const maxValue:number=5
 
     return <div>
-        <Display/>
-        <Controls/>
+        <Display count={count}/>
+        <Controls count={count}
+                  increment={increment}
+                  reset={reset}/>
     </div>
 }
