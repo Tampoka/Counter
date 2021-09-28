@@ -15,7 +15,8 @@ export const Counter = () => {
     }
 
     return <div>
-        <Display count={count}/>
+        <Display count={count}
+                 maxValue={maxValue}/>
         <Controls count={count}
                   setCount={setCount}
                   increment={increment}
