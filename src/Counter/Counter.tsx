@@ -21,6 +21,7 @@ export const Counter = () => {
                   increment={increment}
                   reset={reset}
                   maxValue={maxValue}
+                  minValue={minValue}
         />
     </div>
 }

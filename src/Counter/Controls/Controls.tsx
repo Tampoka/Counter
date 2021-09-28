@@ -6,10 +6,11 @@ export type ControlsPropsType = {
     increment: () => void
     reset: () => void
     maxValue:number
+    minValue:number
 }
 export const Controls = (props: ControlsPropsType) => {
     return <div>
-        <button>Inc</button>
-        <button>Reset</button>
+        <button onClick={props.increment} disabled={props.count===props.maxValue}>Inc</button>
+        <button onClick={props.reset} disabled={props.count===props.minValue}>Reset</button>
     </div>
 }
