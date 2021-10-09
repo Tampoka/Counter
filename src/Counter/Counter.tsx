@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import {Controls} from "./Controls/Controls";
 import {Display} from "./Display/Display";
+import s from "./Counter.module.css"
 
 export const Counter = () => {
     const maxValue: number = 5
@@ -14,7 +15,7 @@ export const Counter = () => {
         setCount(minValue)
     }
 
-    return <div>
+    return <div className={s.counter}>
         <Display count={count}
                  maxValue={maxValue}/>
         <Controls count={count}
