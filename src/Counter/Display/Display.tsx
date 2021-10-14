@@ -1,4 +1,5 @@
 import React from "react";
+import s from "./Display.module.css"
 
 export type DisplayPropsType={
     count:number
@@ -6,6 +7,6 @@ export type DisplayPropsType={
 }
 export const Display=(props:DisplayPropsType)=>{
     return <div>
-        <div className={props.count===props.maxValue?"display":"maxValue"}>{props.count}</div>
+        <div className={props.count===props.maxValue?s.error:""}>{props.count}</div>
     </div>
 }
