@@ -7,5 +7,14 @@
     margin: 50px auto;
     padding: 20px;
 
-    background-color: plum;
+    border-radius: 15px;
+
+    background-color: #da63da;
+}
+
+.controls {
+    display: flex;
+    justify-content: space-around;
+
+    margin: 15px;
 }

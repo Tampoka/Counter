@@ -1,3 +1,11 @@
+.display {
+    background-color:  rgba(47, 80, 93, 0.79);
+
+    padding: 20px 50px;
+
+    border-radius: 8px;
+}
+
 .error {
     font-size: 24px;
     color:red

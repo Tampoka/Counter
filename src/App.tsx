@@ -1,9 +1,9 @@
 import React from 'react';
 import {Counter} from "./Counter/Counter";
-
+import "./App.css"
 function App() {
     return (
-        <div className="App">
+        <div className="app">
             <Counter/>
         </div>
     );
