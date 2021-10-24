@@ -1,10 +1,12 @@
 import React from 'react';
-import {Counter} from "./Counter/Counter";
+import {SimpleCounter} from "./Counter/SimpleCounter";
 import "./App.css"
+
+
 function App() {
     return (
         <div className="app">
-            <Counter/>
+            <SimpleCounter/>
         </div>
     );
 }
