@@ -1,6 +1,6 @@
 import React from 'react';
 import {SimpleCounter} from "./Counter/SimpleCounter";
-import "./App.css"
+import "./App.scss"
 
 
 function App() {

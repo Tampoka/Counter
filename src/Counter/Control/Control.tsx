@@ -1,5 +1,5 @@
 import React from "react";
-import s from "./Control.module.css"
+import s from "./Control.module.scss"
 
 export type ControlPropsType = {
     title: string

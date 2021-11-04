@@ -1,0 +1,11 @@
+@import 'styles/variables/Variables';
+
+.app {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    height: 100vh;
+
+    background-color: $appBackgroundColor;
+}
