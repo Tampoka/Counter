@@ -1,0 +1,21 @@
+@import '../../styles/variables/Variables.scss';
+
+.display {
+    border: 3px solid $primaryColor;
+
+    width: 60%;
+
+    padding: 50px 0;
+    margin: 20px;
+
+    border-radius: 8px;
+
+    text-align: center;
+    font-size: 50px;
+
+}
+
+.error {
+    font-size: 40px;
+    color:red
+}

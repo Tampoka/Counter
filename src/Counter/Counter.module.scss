@@ -1,0 +1,29 @@
+@import '../styles/variables/Variables.scss';
+
+.counter {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    width: 500px;
+    padding: 10px;
+
+    border-radius: 15px;
+
+    border: 3px solid $primaryColor;
+
+    font-family: "Arial Black", sans-serif;
+    font-size: 30px;
+}
+
+.controls {
+    display: flex;
+    justify-content: space-between;
+
+    width: 80%;
+
+    border: 3px solid $primaryColor;
+    border-radius: 8px;
+    margin: 20px;
+}

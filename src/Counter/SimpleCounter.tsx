@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import {Display} from "./Display/Display";
-import s from "./Counter.module.css"
+import s from "./Counter.module.scss"
 import {Control} from "./Control/Control";
 
 export const SimpleCounter = () => {
