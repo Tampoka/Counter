@@ -1,6 +1,10 @@
 @import '../../styles/variables/Variables.scss';
 
 .display {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
   border: 3px solid $primaryColor;
 
   width: 90%;
