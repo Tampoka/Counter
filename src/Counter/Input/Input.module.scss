@@ -1,0 +1,17 @@
+@import '../../styles/variables/Variables.scss';
+
+.setting {
+  margin: 10px 0;
+  span {
+    color: $textColor;
+    font-size: 26px;
+  }
+  input {
+    width: 80px;
+    margin-left: 25px;
+
+    text-align: center;
+    font-family: "Arial Black", sans-serif;
+    font-size: 30px;
+  }
+}
