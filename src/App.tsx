@@ -1,12 +1,12 @@
 import React from 'react';
-import {SimpleCounter} from "./Counter/SimpleCounter";
+import {Counter} from "./Counter/Counter";
 import "./App.scss"
 
 
 function App() {
     return (
         <div className="app">
-            <SimpleCounter/>
+            <Counter/>
         </div>
     );
 }

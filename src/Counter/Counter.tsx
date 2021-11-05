@@ -3,7 +3,7 @@ import {Display} from "./Display/Display";
 import s from "./Counter.module.scss"
 import {Control} from "./Control/Control";
 
-export const SimpleCounter = () => {
+export const Counter = () => {
     const maxValue: number = 5
     const minValue: number = 0
     const [count, setCount] = useState<number>(minValue)
