@@ -12,6 +12,8 @@ export const Counter = () => {
 
     const reset = () => setCount(minValue)
 
+
+
     const disableInc = () => {
         return count === maxValue
     }
