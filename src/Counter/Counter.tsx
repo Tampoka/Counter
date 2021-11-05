@@ -2,6 +2,7 @@ import React, {useState} from "react";
 import {Display} from "./Display/Display";
 import s from "./Counter.module.scss"
 import {Control} from "./Control/Control";
+import DisplayWithSettings from "./DisplayWithSettings/DisplayWithSettings";
 
 export const Counter = () => {
     const maxValue: number = 5
@@ -22,20 +23,32 @@ export const Counter = () => {
         return count === minValue
     }
 
-    return <div className={s.counter}>
-        <Display count={count}
-                 maxValue={maxValue}/>
+    return <div className={s.counterWithSettings}>
+        <div className={s.counter}>
+            <DisplayWithSettings/>
+            <div className={s.controls}>
+                <Control title="Set"
+                         count={count}
+                         action={increment}
+                         setDisabled={disableInc}/>
+            </div>
+        </div>
 
-        <div className={s.controls}>
-            <Control title="Inc"
-                      count={count}
-                      action={increment}
-                      setDisabled={disableInc}/>
+        <div className={s.counter}>
+            <Display count={count}
+                     maxValue={maxValue}/>
 
-            <Control title="Reset"
-                     count={count}
-                     action={reset}
-                     setDisabled={disableReset}/>
+            <div className={s.controls}>
+                <Control title="Inc"
+                         count={count}
+                         action={increment}
+                         setDisabled={disableInc}/>
+
+                <Control title="Reset"
+                         count={count}
+                         action={reset}
+                         setDisabled={disableReset}/>
+            </div>
         </div>
     </div>
 }

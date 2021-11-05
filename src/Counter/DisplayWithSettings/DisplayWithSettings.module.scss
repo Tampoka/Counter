@@ -1,0 +1,15 @@
+@import '../../styles/variables/Variables.scss';
+
+.display {
+  border: 3px solid $primaryColor;
+
+  width: 90%;
+
+  padding: 50px 0;
+  margin: 20px;
+
+  border-radius: 8px;
+
+  text-align: center;
+  font-size: 20px;
+}
