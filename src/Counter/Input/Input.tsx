@@ -1,10 +1,13 @@
 import React from 'react';
 import s from './Input.module.scss'
 
-const Input = () => {
+export type InputPropsType={
+    label:string
+}
+const Input = ({label}:InputPropsType) => {
     return (
         <div className={s.setting}>
-            <span>max value:</span>
+            <span>{label}</span>
             <input type="number"/>
         </div>
     );

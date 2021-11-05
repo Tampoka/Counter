@@ -6,8 +6,8 @@ import Input from "../Input/Input";
 const DisplayWithSettings = () => {
     return (
         <div className={s.display}>
-            <Input/>
-            <Input/>
+            <Input label="max value:"/>
+            <Input label="min value:"/>
         </div>
     );
 };
