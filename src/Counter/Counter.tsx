@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import {Display} from "./Display/Display";
 import s from "./Counter.module.scss"
 import {Control} from "./Control/Control";
@@ -33,17 +33,23 @@ export const Counter = () => {
         setSaveValues(false)
     }
 
-    const setValues = () => {
-        localStorage.setItem("counterValues",JSON.stringify(counterValues))
-        setCounterValues({
-            ...counterValues,
-            maxValue: newCounterValues.maxValue,
-            minValue: newCounterValues.minValue
-        })
+    const setValues = ()=> {
+        localStorage.setItem("counterValues", JSON.stringify(newCounterValues))
+        setCounterValues(newCounterValues)
         setCount(newCounterValues.minValue)
         setError('')
         setSaveValues(true)
     }
+
+    useEffect(() => {
+        let valueAsString = localStorage.getItem("counterValues")
+        if (valueAsString) {
+            let newValues = JSON.parse(valueAsString)
+            console.log(newValues)
+            setNewCounterValues(newValues)
+            setCount(newValues.minValue)
+        }
+    }, [])
 
     const disableInc = () => {
         return count === counterValues.maxValue
@@ -53,10 +59,7 @@ export const Counter = () => {
         return count === counterValues.minValue
     }
 
-    const disableSet=()=>saveValues
-
-    console.log(newCounterValues)
-    console.log(counterValues)
+    const disableSet = () => saveValues
 
     return <div className={s.counterWithSettings}>
         <div className={s.counter}>
