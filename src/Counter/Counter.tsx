@@ -56,6 +56,7 @@ export const Counter = () => {
     useEffect(() => {
         if (newCounterValues.maxValue <= newCounterValues.minValue || newCounterValues.minValue < 0) {
             setError('Incorrect value!')
+            setSaveValues(true)
         }
     }, [newCounterValues])
 
