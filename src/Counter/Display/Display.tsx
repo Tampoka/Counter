@@ -4,6 +4,7 @@ import s from "./Display.module.scss"
 export type DisplayPropsType={
     count:number
     maxValue:number
+    error:boolean
 }
 export const Display=(props:DisplayPropsType)=>{
     return <div className={s.display}>

@@ -5,14 +5,16 @@ import {Control} from "./Control/Control";
 import DisplayWithSettings from "./DisplayWithSettings/DisplayWithSettings";
 
 export const Counter = () => {
-    const maxValue: number = 5
-    const minValue: number = 0
+    const [maxValue, setMaxValue] = useState<number>(5)
+    const [minValue, setMinValue] = useState<number>(0)
     const [count, setCount] = useState<number>(minValue)
+    const [error, setError] = useState<boolean>(false)
 
     const increment = () => setCount(count + 1)
-
     const reset = () => setCount(minValue)
 
+    const setMax = (max = 0) => setMaxValue(max)
+    const setMin = (min = 0) => setMinValue(min)
 
 
     const disableInc = () => {
@@ -25,7 +27,10 @@ export const Counter = () => {
 
     return <div className={s.counterWithSettings}>
         <div className={s.counter}>
-            <DisplayWithSettings/>
+            <DisplayWithSettings setMax={setMax}
+                                 setMin={setMin}
+                                 maxValue={maxValue}
+                                 minValue={minValue}/>
             <div className={s.controls}>
                 <Control title="Set"
                          count={count}
@@ -36,7 +41,9 @@ export const Counter = () => {
 
         <div className={s.counter}>
             <Display count={count}
-                     maxValue={maxValue}/>
+                     maxValue={maxValue}
+                     error={error}
+            />
 
             <div className={s.controls}>
                 <Control title="Inc"
