@@ -61,11 +61,11 @@ export const Counter = () => {
     }, [newCounterValues])
 
     const disableInc = () => {
-        return count === counterValues.maxValue
+        return count === counterValues.maxValue || !!error
     }
 
     const disableReset = () => {
-        return count === counterValues.minValue
+        return count === counterValues.minValue || !!error
     }
 
     const disableSet = () => saveValues
