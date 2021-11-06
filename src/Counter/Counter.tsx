@@ -27,10 +27,12 @@ export const Counter = () => {
     const setMax = (value: number) => {
         setNewCounterValues({...newCounterValues, maxValue: value})
         setSaveValues(false)
+        setError('enter values and press "set"')
     }
     const setMin = (value: number) => {
         setNewCounterValues({...newCounterValues, minValue: value})
         setSaveValues(false)
+        setError('enter values and press "set"')
     }
 
     const setValues = ()=> {
@@ -50,6 +52,12 @@ export const Counter = () => {
             setCount(newValues.minValue)
         }
     }, [])
+
+    useEffect(() => {
+        if (newCounterValues.maxValue <= newCounterValues.minValue || newCounterValues.minValue < 0) {
+            setError('Incorrect value!')
+        }
+    }, [newCounterValues])
 
     const disableInc = () => {
         return count === counterValues.maxValue

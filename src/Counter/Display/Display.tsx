@@ -8,6 +8,9 @@ export type DisplayPropsType={
 }
 export const Display=(props:DisplayPropsType)=>{
     return <div className={s.display}>
-        <div className={props.count===props.maxValue?s.error:""}>{props.count}</div>
+        {props.error
+        ?<div className={s.errorMessage}>{props.error}</div>
+        :<div className={props.count === props.maxValue ? s.error : ""}>{props.count}</div>
+        }
     </div>
 }
