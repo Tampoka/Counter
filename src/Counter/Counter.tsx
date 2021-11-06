@@ -35,7 +35,7 @@ export const Counter = () => {
         setError('enter values and press "set"')
     }
 
-    const setValues = ()=> {
+    const setValues = () => {
         localStorage.setItem("counterValues", JSON.stringify(newCounterValues))
         setCounterValues(newCounterValues)
         setCount(newCounterValues.minValue)

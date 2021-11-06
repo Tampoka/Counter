@@ -1,16 +1,16 @@
 import React from "react";
 import s from "./Display.module.scss"
 
-export type DisplayPropsType={
-    count:number
-    maxValue:number
-    error:string
+export type DisplayPropsType = {
+    count: number
+    maxValue: number
+    error: string
 }
-export const Display=(props:DisplayPropsType)=>{
+export const Display = (props: DisplayPropsType) => {
     return <div className={s.display}>
         {props.error
-        ?<div className={s.errorMessage}>{props.error}</div>
-        :<div className={props.count === props.maxValue ? s.error : ""}>{props.count}</div>
+            ? <div className={s.errorMessage}>{props.error}</div>
+            : <div className={props.count === props.maxValue ? s.error : ""}>{props.count}</div>
         }
     </div>
 }
