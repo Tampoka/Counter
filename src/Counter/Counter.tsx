@@ -4,44 +4,77 @@ import s from "./Counter.module.scss"
 import {Control} from "./Control/Control";
 import DisplayWithSettings from "./DisplayWithSettings/DisplayWithSettings";
 
+export type CounterValuesType = {
+    maxValue: number
+    minValue: number
+}
 export const Counter = () => {
-    const [maxValue, setMaxValue] = useState<number>(5)
-    const [minValue, setMinValue] = useState<number>(0)
-    const [count, setCount] = useState<number>(minValue)
-    const [error, setError] = useState<boolean>(false)
+    const [counterValues, setCounterValues] = useState<CounterValuesType>({
+        maxValue: 5,
+        minValue: 0
+    })
+    const [newCounterValues, setNewCounterValues] = useState<CounterValuesType>({
+        maxValue: 5,
+        minValue: 0
+    })
+    const [saveValues, setSaveValues] = useState<boolean>(false)
+    const [count, setCount] = useState<number>(counterValues.minValue)
+    const [error, setError] = useState<string>('')
 
     const increment = () => setCount(count + 1)
-    const reset = () => setCount(minValue)
+    const reset = () => setCount(counterValues.minValue)
 
-    const setMax = (max = 0) => setMaxValue(max)
-    const setMin = (min = 0) => setMinValue(min)
+    const setMax = (value: number) => {
+        setNewCounterValues({...newCounterValues, maxValue: value})
+        setSaveValues(false)
+    }
+    const setMin = (value: number) => {
+        setNewCounterValues({...newCounterValues, minValue: value})
+        setSaveValues(false)
+    }
 
+    const setValues = () => {
+        localStorage.setItem("counterValues",JSON.stringify(counterValues))
+        setCounterValues({
+            ...counterValues,
+            maxValue: newCounterValues.maxValue,
+            minValue: newCounterValues.minValue
+        })
+        setCount(newCounterValues.minValue)
+        setError('')
+        setSaveValues(true)
+    }
 
     const disableInc = () => {
-        return count === maxValue
+        return count === counterValues.maxValue
     }
 
     const disableReset = () => {
-        return count === minValue
+        return count === counterValues.minValue
     }
+
+    const disableSet=()=>saveValues
+
+    console.log(newCounterValues)
+    console.log(counterValues)
 
     return <div className={s.counterWithSettings}>
         <div className={s.counter}>
             <DisplayWithSettings setMax={setMax}
                                  setMin={setMin}
-                                 maxValue={maxValue}
-                                 minValue={minValue}/>
+                                 maxValue={newCounterValues.maxValue}
+                                 minValue={newCounterValues.minValue}/>
             <div className={s.controls}>
                 <Control title="Set"
                          count={count}
-                         action={increment}
-                         setDisabled={disableInc}/>
+                         action={setValues}
+                         setDisabled={disableSet}/>
             </div>
         </div>
 
         <div className={s.counter}>
             <Display count={count}
-                     maxValue={maxValue}
+                     maxValue={counterValues.maxValue}
                      error={error}
             />
 
