@@ -48,6 +48,7 @@ export const Counter = () => {
         if (valueAsString) {
             let newValues = JSON.parse(valueAsString)
             console.log(newValues)
+            setCounterValues(newValues)
             setNewCounterValues(newValues)
             setCount(newValues.minValue)
         }
