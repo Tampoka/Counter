@@ -1,28 +1,39 @@
-import React, {useEffect, useState} from "react";
+import React, {Dispatch, useEffect, useState} from "react";
 import {Display} from "./Display/Display";
 import s from "./Counter.module.scss"
 import {Control} from "./Control/Control";
 import DisplayWithSettings from "./DisplayWithSettings/DisplayWithSettings";
+import {useDispatch} from "react-redux";
 
 export type CounterValuesType = {
     maxValue: number
     minValue: number
+    currentValue:number
+}
+
+export type NewCounterValuesType = {
+    maxValue: number
+    minValue: number
 }
 export const Counter = () => {
+
+    const dispatch: Dispatch<any> = useDispatch()
+
     const [counterValues, setCounterValues] = useState<CounterValuesType>({
         maxValue: 5,
-        minValue: 0
+        minValue: 0,
+        currentValue:0
     })
-    const [newCounterValues, setNewCounterValues] = useState<CounterValuesType>({
+    const [newCounterValues, setNewCounterValues] = useState<NewCounterValuesType>({
         maxValue: 5,
         minValue: 0
     })
     const [isSaved, setIsSaved] = useState<boolean>(false)
-    const [count, setCount] = useState<number>(counterValues.minValue)
+    // const [count, setCount] = useState<number>(counterValues.minValue)
     const [error, setError] = useState<string>('')
 
-    const increment = () => setCount(count + 1)
-    const reset = () => setCount(counterValues.minValue)
+    const increment = () => setCounterValues({...counterValues,currentValue:counterValues.currentValue+1})
+    const reset = () => setCounterValues({...counterValues,currentValue:counterValues.minValue})
 
     const setMax = (value: number) => {
         setNewCounterValues({...newCounterValues, maxValue: value})
@@ -37,8 +48,8 @@ export const Counter = () => {
 
     const setValues = () => {
         localStorage.setItem("counterValues", JSON.stringify(newCounterValues))
-        setCounterValues(newCounterValues)
-        setCount(newCounterValues.minValue)
+        setCounterValues({...counterValues,maxValue:newCounterValues.maxValue,
+        minValue:newCounterValues.minValue,currentValue:newCounterValues.minValue})
         setError('')
         setIsSaved(true)
     }
@@ -48,9 +59,8 @@ export const Counter = () => {
         if (valueAsString) {
             let newValues = JSON.parse(valueAsString)
             console.log(newValues)
-            setCounterValues(newValues)
+            setCounterValues({...counterValues,maxValue:newValues.maxValue,minValue:newValues.minValue,currentValue:newValues.minValue})
             setNewCounterValues(newValues)
-            setCount(newValues.minValue)
         }
     }, [])
 
@@ -61,9 +71,9 @@ export const Counter = () => {
         }
     }, [newCounterValues])
 
-    const disableInc = () => count === counterValues.maxValue || !!error
+    const disableInc = () => counterValues.currentValue === counterValues.maxValue || !!error
 
-    const disableReset = () => count === counterValues.minValue || !!error
+    const disableReset = () => counterValues.currentValue === counterValues.minValue || !!error
 
     const disableSet = () => isSaved
 
@@ -75,26 +85,26 @@ export const Counter = () => {
                                  minValue={newCounterValues.minValue}/>
             <div className={s.controls}>
                 <Control title="Set"
-                         count={count}
+                         count={counterValues.currentValue}
                          action={setValues}
                          setDisabled={disableSet}/>
             </div>
         </div>
 
         <div className={s.counter}>
-            <Display count={count}
+            <Display count={counterValues.currentValue}
                      maxValue={counterValues.maxValue}
                      error={error}
             />
 
             <div className={s.controls}>
                 <Control title="Inc"
-                         count={count}
+                         count={counterValues.currentValue}
                          action={increment}
                          setDisabled={disableInc}/>
 
                 <Control title="Reset"
-                         count={count}
+                         count={counterValues.currentValue}
                          action={reset}
                          setDisabled={disableReset}/>
             </div>
