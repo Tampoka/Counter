@@ -17,7 +17,7 @@ export const Counter = () => {
         maxValue: 5,
         minValue: 0
     })
-    const [saveValues, setSaveValues] = useState<boolean>(false)
+    const [isSaved, setIsSaved] = useState<boolean>(false)
     const [count, setCount] = useState<number>(counterValues.minValue)
     const [error, setError] = useState<string>('')
 
@@ -26,12 +26,12 @@ export const Counter = () => {
 
     const setMax = (value: number) => {
         setNewCounterValues({...newCounterValues, maxValue: value})
-        setSaveValues(false)
+        if (isSaved) setIsSaved(false)
         setError('enter values and press "set"')
     }
     const setMin = (value: number) => {
         setNewCounterValues({...newCounterValues, minValue: value})
-        setSaveValues(false)
+        if (isSaved) setIsSaved(false)
         setError('enter values and press "set"')
     }
 
@@ -40,7 +40,7 @@ export const Counter = () => {
         setCounterValues(newCounterValues)
         setCount(newCounterValues.minValue)
         setError('')
-        setSaveValues(true)
+        setIsSaved(true)
     }
 
     useEffect(() => {
@@ -57,19 +57,15 @@ export const Counter = () => {
     useEffect(() => {
         if (newCounterValues.maxValue <= newCounterValues.minValue || newCounterValues.minValue < 0) {
             setError('Incorrect value!')
-            setSaveValues(true)
+            setIsSaved(true)
         }
     }, [newCounterValues])
 
-    const disableInc = () => {
-        return count === counterValues.maxValue || !!error
-    }
+    const disableInc = () => count === counterValues.maxValue || !!error
 
-    const disableReset = () => {
-        return count === counterValues.minValue || !!error
-    }
+    const disableReset = () => count === counterValues.minValue || !!error
 
-    const disableSet = () => saveValues
+    const disableSet = () => isSaved
 
     return <div className={s.counterWithSettings}>
         <div className={s.counter}>
