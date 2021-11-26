@@ -1,6 +1,7 @@
 export type CounterValuesType = {
     maxValue: number
     minValue: number
+    currentValue?:number
 }
 
 export type StateType = {
@@ -15,7 +16,8 @@ const SET_COUNTER_VALUES = "SET_COUNTER_VALUES";
 let initialState = {
     counterValues: {
         maxValue: 5,
-        minValue: 0
+        minValue: 0,
+        currentValue:0
     },
     newCounterValues: {
         maxValue: 5,
