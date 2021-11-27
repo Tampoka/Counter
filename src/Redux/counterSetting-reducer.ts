@@ -14,7 +14,7 @@ let initialState = {
         newMinValue: 0,
 }
 
-export const counterReducer = (state: StateType = initialState, action: ActionValuesType): StateType => {
+export const counterSettingReducer = (state: StateType = initialState, action: ActionValuesType): StateType => {
     switch (action.type) {
         case SET_NEW_MAX_VALUE:
             return {...state,  newMaxValue: action.value};
