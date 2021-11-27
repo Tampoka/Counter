@@ -1,6 +1,6 @@
 
 
-export type StateType = {
+export type SettingStateType = {
     newMaxValue: number,
     newMinValue: number
 }
@@ -14,13 +14,14 @@ let initialState = {
         newMinValue: 0,
 }
 
-export const counterSettingReducer = (state: StateType = initialState, action: ActionValuesType): StateType => {
+export const counterSettingReducer = (state: SettingStateType = initialState, action: ActionValuesType): SettingStateType => {
     switch (action.type) {
         case SET_NEW_MAX_VALUE:
             return {...state,  newMaxValue: action.value};
         case SET_NEW_MIN_VALUE:
             return {...state,newMinValue: action.value};
-
+        default:
+            return state;
     }
 }
 
