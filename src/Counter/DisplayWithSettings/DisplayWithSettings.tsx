@@ -26,12 +26,10 @@ const DisplayWithSettings = (props: DisplayWithSettingsPropsType) => {
             <Input label="max value:"
                    onChange={onChangeMaxHandler}
                    value={newMaxValue}
-
             />
             <Input label="min value:"
                    onChange={onChangeMinHandler}
-                   value={newMinValue}/>
-
+            value={newMinValue}/>
         </div>
     );
 };

@@ -4,7 +4,7 @@ import s from './Input.module.scss'
 type InputPropsType = {
     label: string
     onChange: (value: number) => void
-    value: number
+    value:number
 }
 const Input = (props: InputPropsType) => {
     const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => props.onChange(Number(e.currentTarget.value))
