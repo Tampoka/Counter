@@ -1,4 +1,3 @@
-import React from 'react';
 import s from './DisplayWithSettings.module.scss'
 import Input from "../Input/Input";
 import {useSelector} from "react-redux";
