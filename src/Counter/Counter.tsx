@@ -103,6 +103,7 @@ export const Counter = () => {
         <div className={s.counter}>
             <Display count={currentValue}
                      maxValue={maxValue}
+                     minValue={minValue}
                      error={error}
             />
 
