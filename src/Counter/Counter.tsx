@@ -4,15 +4,26 @@ import s from "./Counter.module.scss"
 import {Control} from "./Control/Control";
 import DisplayWithSettings from "./DisplayWithSettings/DisplayWithSettings";
 import {useDispatch, useSelector} from "react-redux";
-import {CounterStateType, setCounterValuesAC, setCurrentValueAC} from "../Redux/counter-reducer";
+import {
+    CounterStateType,
+    setCounterValuesAC,
+    setCurrentValueAC
+} from "../Redux/counter-reducer";
 import {AppStateType} from "../Redux/store";
-import {setNewMaxValueAC, setNewMinValueAC, SettingStateType} from "../Redux/counterSetting-reducer";
+import {
+    setNewMaxValueAC,
+    setNewMinValueAC,
+    SettingStateType
+} from "../Redux/counterSetting-reducer";
 
 export const Counter = () => {
 
     const dispatch = useDispatch()
 
-    const {newMaxValue, newMinValue} = useSelector<AppStateType, SettingStateType>(state => state.counterSettingReducer)
+    const {
+        newMaxValue,
+        newMinValue
+    } = useSelector<AppStateType, SettingStateType>(state => state.counterSettingReducer)
     const {
         maxValue,
         minValue,
@@ -80,12 +91,11 @@ export const Counter = () => {
         }
     }, [newMaxValue, newMinValue])
 
-    const disableInc = () => currentValue === maxValue || !!error
-    const disableDec = () => currentValue === minValue || !!error
-
-    const disableReset = () => currentValue === minValue || !!error
-
-    const disableSet = () => isSaved
+    //conditions for disabling buttons
+    const disableInc = currentValue === maxValue || !!error
+    const disableDec = currentValue === minValue || !!error
+    const disableReset = currentValue === minValue || !!error
+    const disableSet = isSaved
 
     return <div className={s.counterWithSettings}>
         <div className={s.counter}>
